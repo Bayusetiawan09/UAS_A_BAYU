@@ -89,15 +89,8 @@ class Auth extends CI_Controller {
     }
 
     public function logout(){
-        // Hapus semua session
         $this->session->unset_userdata(['user_id', 'username', 'role', 'logged_in', 'id_sales']);
         $this->session->sess_destroy();
-
-        // Tambahkan header anti-cache
-        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-        header("Cache-Control: post-check=0, pre-check=0", false);
-        header("Pragma: no-cache");
-
         redirect('auth/login');
     }
 }

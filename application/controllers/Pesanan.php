@@ -35,7 +35,6 @@ class Pesanan extends CI_Controller {
         return;
     }
 
-    // Kembalikan stok jika dibatalkan
     if ($status_order === 'dibatalkan') {
         $this->Pesanan_model->restoreStock($id_order);
     }
