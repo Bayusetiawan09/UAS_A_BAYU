@@ -14,7 +14,7 @@ class Laporan extends CI_Controller {
         $this->load->model('Laporan_model');
         $this->load->model('Sales_model');
         $this->load->model('Produk_model');
-        $this->load->library('pdf'); // Dompdf
+        $this->load->library('pdf'); 
     }
 
     public function index() {
@@ -32,18 +32,15 @@ class Laporan extends CI_Controller {
         $start_date = $this->input->get('start_date');
         $end_date   = $this->input->get('end_date');
 
-        // Validasi wajib input tanggal
         if (empty($start_date) || empty($end_date)) {
             $this->session->set_flashdata('error', 'Silakan pilih tanggal mulai dan tanggal akhir terlebih dahulu.');
             redirect('laporan');
             return;
         }
 
-        // Perluas waktu filter untuk satu hari penuh
         $start_date_full = $start_date . ' 00:00:00';
         $end_date_full   = $end_date . ' 23:59:59';
 
-        // Ambil data laporan sesuai filter
         $data['laporan'] = $this->Laporan_model->get_laporan($id_sales, $id_produk, $start_date_full, $end_date_full);
         $data['start_date'] = $start_date;
         $data['end_date'] = $end_date;

@@ -59,7 +59,6 @@ class Produk extends CI_Controller {
         $this->form_validation->set_rules('stok', 'Stok', 'required|numeric');
 
         if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal, reload halaman edit dengan data produk
             $this->edit($id);
         } else {
             $data = [

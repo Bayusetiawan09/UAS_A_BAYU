@@ -25,7 +25,6 @@ class Pdf {
         $this->dompdf->set_paper($size, $orientation);
     }
 
-    // Method custom untuk CodeIgniter
     public function generate_pdf($html, $filename = "document.pdf", $attachment = 0, $paper = 'A4', $orientation = 'portrait') {
         $this->set_paper($paper, $orientation);
         $this->load_html($html);
