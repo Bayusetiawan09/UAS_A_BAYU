@@ -3,10 +3,10 @@ class Sales extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
-    // Cek user sudah login dan role harus admin
-        if (!$this->session->userdata('logged_in') || $this->session->userdata('role') != 'sales') {
-            redirect('auth/login');
-        }
+    // Cek apakah user sudah login
+    if (!$this->session->userdata('logged_in')) {
+        redirect('auth/login');
+    }
     $this->load->model('Sales_model');
     $this->load->library('session');
     $this->load->library('form_validation');
